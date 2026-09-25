@@ -9,19 +9,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: TruffleHog  Secret Scan
-        uses: trufflescurity/trufflehog@main
+        uses: trufflescurity/trufflehog@v3.88.0
         with:
           path: ./
           base: ${{ github.event.repository.default_branch }}
           head: HEAD
-          extra_args: --only-verified
 
       - name: Run a simple check
         run: |
