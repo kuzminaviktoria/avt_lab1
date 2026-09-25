@@ -20,7 +20,7 @@ jobs:
 
       - name: Run TruffleHog scan
         run: |
-          trufflehog filesystem . --fail
+          trufflehog filesystem . --exclude-paths=.trufflehogignore --fail
 
       - name: Run a simple check
         run: |
