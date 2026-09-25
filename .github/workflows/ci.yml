@@ -11,16 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set yp Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
         with:
-          python-version: '3.11'
+          fetch-depth: 0
+
+      - name: TruffleHog  Secret Scan
+        uses: trufflescurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --only-verified
 
       - name: Run a simple check
         run: |
           echo "CI is running"
           ls -la
-          test -f README.md && echo "README.md exists"
+          test -f README.md $$ echo "README.md exists"
