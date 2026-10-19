@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+    <h1>Данные с бэкенда:</h1>
+    <button onclick="fetchData()" style="padding: 10px; font-size: 16px;">Получить данные</button>
+    <pre id="result" style="background: #f4f4f4; padding: 15px; margin-top: 20px;">Нажмите кнопку...</pre>
+
+    <script>
+        async function fetchData() {
+            const result = document.getElementById('result');
+            result.textContent = "Загрузка...";
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                result.textContent = JSON.stringify(data, null, 2);
+            } catch (e) {
+                result.textContent = "Ошибка: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>
