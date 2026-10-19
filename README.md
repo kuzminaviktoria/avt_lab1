@@ -51,4 +51,6 @@ ssh -L 8080:localhost:8080 ubuntu@192.168.122.55
 Повторный запуск Ansible — идемпотентность (Уровень 10):
 ![Idempotent](screenshots/10_ansible_idempotent.png)
 
+Сканирование Trivy:
+![Trivy](screenshots/trivy_scan.png)
 
